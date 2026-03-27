@@ -56,5 +56,25 @@ A modern, full-stack Job Portal built with **Django REST Framework** and **Angul
 ## Project Structure
 
 - `backend/`: Django core, apps (`users`, `jobs`), and API configuration.
-- `frontend/`: Angular application with features, core services, and styling.
-- `docker/`: (Optional) Deployment configurations.
+## Docker Setup
+
+### Local Development (with Docker Compose)
+
+1.  Ensure you have Docker and Docker Compose installed.
+2.  Run the following command in the root directory:
+    ```bash
+    docker-compose up --build
+    ```
+3.  The database, backend, and frontend will start:
+    -   Frontend: `http://localhost:4200`
+    -   Backend: `http://localhost:8000/api/v1`
+    -   Postgres: `localhost:5432`
+
+### Production Deployment (with Docker Compose)
+
+1.  Prepare your production `.env` file in `backend/`.
+2.  Run the following command:
+    ```bash
+    docker-compose -f docker-compose.prod.yml up --build -d
+    ```
+3.  The frontend will be served at port `80`.

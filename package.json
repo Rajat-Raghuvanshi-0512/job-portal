@@ -1,0 +1,12 @@
+{
+  "name": "job-portal-root",
+  "version": "1.0.0",
+  "description": "Root management for Job Portal",
+  "scripts": {
+    "dev": "docker-compose up --build",
+    "down": "docker-compose down",
+    "prod": "docker-compose -f docker-compose.prod.yml up --build -d",
+    "backend-shell": "docker-compose exec backend python manage.py shell",
+    "createsuperuser": "docker-compose exec backend python manage.py createsuperuser"
+  }
+}
