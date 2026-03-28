@@ -129,14 +129,9 @@ export class HomeComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.authService.getProfile().subscribe();
-    }
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.authService.logout();
-    window.location.reload();
   }
 }

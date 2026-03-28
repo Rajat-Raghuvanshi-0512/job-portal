@@ -22,6 +22,12 @@ class JobViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['job_type', 'location']
     search_fields = ['title', 'description', 'company_name']
+    
+    def get_queryset(self):
+        queryset = Job.objects.filter(is_active=True).order_by('-created_at')
+        if self.request.query_params.get('my_jobs') == 'true':
+            return queryset.filter(employer=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(employer=self.request.user)
